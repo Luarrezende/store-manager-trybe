@@ -13,11 +13,18 @@ const arr = [
   },
 ];
 
-const successuful = {
+const successful = {
   status: 'SUCCESSFUL',
   result: arr,
 };
+
+const seccessfulId = {
+  status: 'SUCCESSFUL',
+  result: arr[1],
+};
+
 module.exports = {
   arr,
-  successuful,
+  successful,
+  seccessfulId,
 };
