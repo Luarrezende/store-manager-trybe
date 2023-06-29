@@ -23,8 +23,23 @@ const seccessfulId = {
   result: arr[1],
 };
 
+const postMock = {
+  id: 16,
+  name: 'Luar',
+};
+
+const postSuccessful = {
+  status: 'CREATED',
+  result: {
+    id: 16,
+    name: 'Luar',
+  },
+};
+
 module.exports = {
   arr,
   successful,
   seccessfulId,
+  postMock,
+  postSuccessful,
 };

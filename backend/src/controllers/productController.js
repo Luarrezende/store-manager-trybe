@@ -14,7 +14,16 @@ const getId = async (req, res) => {
   return res.status(mapStatusHTTP(status)).json(result);
 };
 
+const postName = async (req, res) => {
+  const { name } = req.body;
+
+  const { status, result } = await productService.postName(name);
+
+  return res.status(mapStatusHTTP(status)).json(result);
+};
+
 module.exports = {
   getAll,
   getId,
+  postName,
 };

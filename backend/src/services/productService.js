@@ -13,7 +13,13 @@ const getId = async (id) => {
   return { status: 'SUCCESSFUL', result };
 };
 
+const postName = async (name) => {
+  const result = await productModel.postName(name);
+  return { status: 'CREATED', result };
+};
+
 module.exports = {
   getAll,
   getId,
+  postName,
 };

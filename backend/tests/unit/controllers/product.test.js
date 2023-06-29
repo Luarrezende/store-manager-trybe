@@ -46,6 +46,24 @@ describe('verifica productsController', function () {
     expect(res.status).to.have.been.calledWith(200);
     expect(res.json).to.have.been.calledWith(mocks.arr[1]);
   });
+  it('se o postName retorna status 201', async function () {
+    sinon.stub(productService, 'postName').resolves(mocks.postSuccessful);
+
+    const req = {
+      body: {
+        name: 'Luar',
+      },
+    };
+
+    const res = {
+      status: sinon.stub().returnsThis(),
+      json: sinon.stub(),
+    };
+
+    await productController.postName(req, res);
+
+    expect(res.status).to.have.been.calledWith(201);
+  });
   afterEach(function () {
     sinon.restore();
   });

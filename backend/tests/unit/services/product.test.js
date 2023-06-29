@@ -2,7 +2,7 @@ const { expect } = require('chai');
 const sinon = require('sinon');
 const { productService } = require('../../../src/services');
 const { productModel } = require('../../../src/models');
-const { arr } = require('../mocks/products');
+const { arr, postMock } = require('../mocks/products');
 
 describe('verifica productService', function () {
   it('se todos os produtos são selecionados', async function () {
@@ -30,6 +30,15 @@ describe('verifica productService', function () {
     const products = await productService.getId(inputId);
 
     expect(products.status).to.be.equal('SUCCESSFUL');
+  });
+  it('se um produto é criado com sucesso', async function () {
+    sinon.stub(productModel, 'postName').resolves(postMock);
+
+    const inputName = 'Luar';
+    
+    const products = await productService.postName(inputName);
+
+    expect(products.status).to.be.equal('CREATED');
   });
   afterEach(function () {
     sinon.restore();
