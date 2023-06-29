@@ -13,7 +13,23 @@ const getId = async (id) => {
   return { status: 'SUCCESSFUL', result };
 };
 
+const postName = async (body) => {
+  const insertId = await salesModel.fun();
+  body.map(async (item) => {
+    const { productId, quantity } = item;
+    await salesModel.postName(insertId, productId, quantity);
+  });
+  return {
+    status: 'CREATED',
+    result: {
+      id: insertId,
+      itemsSold: body,
+    },
+  };
+};
+
 module.exports = {
   getAll,
   getId,
+  postName,
 };

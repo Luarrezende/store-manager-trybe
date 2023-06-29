@@ -16,7 +16,19 @@ const getId = async (id) => {
   return result;
 };
 
+const fun = async () => {
+  const [{ insertId }] = await connection.execute('INSERT INTO sales (date) VALUES (NOW());');
+  return insertId;
+};
+
+const postName = async (insertId, productId, quantity) => {
+  const query = 'INSERT INTO sales_products (sale_id, product_id, quantity) VALUES (?, ?, ?);';
+  await connection.execute(query, [insertId, productId, quantity]);
+};
+
 module.exports = {
   getAll,
   getId,
+  postName,
+  fun,
 };
