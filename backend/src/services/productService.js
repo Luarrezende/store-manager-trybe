@@ -18,8 +18,18 @@ const postName = async (name) => {
   return { status: 'CREATED', result };
 };
 
+const updateName = async (name, id) => {
+  const findId = await productModel.getId(id);
+  const result = await productModel.updateName(name, id);
+  if (!findId) {
+    return { result: { message: 'Product not found' }, status: 'NOT_FOUND' };
+  }
+  return { status: 'SUCCESSFUL', result };
+};
+
 module.exports = {
   getAll,
   getId,
   postName,
+  updateName,
 };

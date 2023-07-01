@@ -20,8 +20,15 @@ const postName = async (name) => {
   };
 };
 
+const updateName = async (name, id) => {
+  const query = 'UPDATE products SET name = ? WHERE id = ?';
+  await connection.execute(query, [name, id]);
+  return { name, id };
+};
+
 module.exports = {
   getAll,
   getId,
   postName,
+  updateName,
 };
