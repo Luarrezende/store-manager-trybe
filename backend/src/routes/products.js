@@ -3,12 +3,12 @@ const express = require('express');
 const router = express.Router();
 
 const { productController } = require('../controllers');
-const { validateName } = require('../middlewares/validadeProduct');
+const { validateName, minNameLength } = require('../middlewares/validadeProduct');
 
 router.get('/', productController.getAll);
 
 router.get('/:id', productController.getId);
 
-router.post('/', validateName, productController.postName);
+router.post('/', validateName, minNameLength, productController.postName);
 
 module.exports = router;
