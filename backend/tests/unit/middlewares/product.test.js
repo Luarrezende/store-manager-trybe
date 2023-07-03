@@ -7,7 +7,7 @@ chai.use(sinonChai);
 
 const { validateName, minNameLength } = require('../../../src/middlewares/validadeProduct');
 
-describe('verifica de products', function () {
+describe('verifica middlewares de products', function () {
   it('deve passar para o próximo middleware quando o campo name é válido', async function () {
     const req = {};
     const res = {
