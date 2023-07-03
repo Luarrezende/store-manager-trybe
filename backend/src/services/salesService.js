@@ -15,10 +15,11 @@ const getId = async (id) => {
 
 const postName = async (body) => {
   const insertId = await salesModel.fun();
-  body.map(async (item) => {
+  const test = body.map((item) => {
     const { productId, quantity } = item;
-    await salesModel.postName(insertId, productId, quantity);
+    return salesModel.postName(insertId, productId, quantity);
   });
+  await Promise.all(test);
   return {
     status: 'CREATED',
     result: {
